@@ -30,9 +30,8 @@ class Article(models.Model):
     date = models.DateField()
     tags = TaggableManager()
     opinion = models.BooleanField()
+    profile_pic = models.ImageField(upload_to='profile_pic/%Y/%m/%d/', max_length=255, null=True)
     REQUIRED_FIELDS = ['title', 'text', 'author', 'date', 'tags']
-
-    # Img = models.ImageField(upload_to=filepath)
     
     def __str__(self):
         return self.text
