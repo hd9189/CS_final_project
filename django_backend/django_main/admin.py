@@ -5,11 +5,12 @@ from .models import Article
 
 class ArticleAdmin(UserAdmin):
     ordering = ['title', 'date']# order of display
-    list_display = ('title', 'date', 'tags', 'text', 'views', 'likes', 'opinion') # whatever you want to display on admin
+    list_display = ('title', 'date', 'tags', 'text', 'views', 'likes', 'opinion', 'approved') # whatever you want to display on admin
     search_fields = () # what you can search for
     filter_horizontal = ()
     list_filter = ()
     fieldsets = ()
+    list_editable=['approved']
 
 # Can see list db on site
 admin.site.register(Article, ArticleAdmin)

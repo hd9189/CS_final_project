@@ -2,10 +2,11 @@
 
 {% block title %} Submit an Article {% endblock %}
 
-{% block content %} 
-<form method="post" action="/submit_form/">
-    {{form.as_p}}
-    <button type="submit", name="submit">Submit Article</button>
-</form>
-{% endblock %}
+{% block content %}
+  <form method="post" action="/submit_form/" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="submit" href="thanks">Submit Article</button>
+  </form>
 
+{% endblock %}

@@ -3,23 +3,21 @@
 {% block content %}
 
 <div class="main_article">
-    <img src="django_backend/django_backend/django_main/templates/main/images/test_image.jpeg" alt="Test">
+    <img src={{artile_1_img}} alt="Main Article Image">
     <header class="main_article_text">
 
-       <a href= "">
+       <a href= {{article_1_link}}>
             <h1>
-      Article 1
+          {{article_1_title}}
               
       </h1>
        </a> 
 
       <p1>
-       DD/MM/YYYY, Author Name 
+       {{article_1_date}}, {{article_1_author}} 
       </p1>
       <p2 class="text">
-        
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. Morbi id urna eget dui finibus fermentum eu ut purus. Sed molestie sapien ut purus ultricies fringilla. Nulla fringilla felis urna, in mattis lorem condimentum nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut et ultrices urna. Aenean lectus erat, cursus ut erat in, malesuada egestas nibh. Quisque lorem nunc, pellentesque ac lacinia vel, vestibulum vel urna.
+          {{article_1_subtitle}}
 
       </p2>
     </header>
@@ -30,49 +28,46 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada s
 <div class="sub_articles">
   <div class="left_side_articles">
    <div class = "img_sub_article">
-      <img class="sub_article_img" src = "django_backend/django_backend/django_main/templates/main/images/sub_article_img.jpg" alt="Sub Article Img">
+      <img class="sub_article_img" src = {{article_2_img}} alt="Sub Article Img">
      <div class="img_sub_article_text">
       <h2>
-      Title of Article WIth Image
+      {{article_2_title}}
     </h2>
      <p2>
-       DD/MM/YYYY
+       {{article_2_date}}
      </p2>
     <p3 class = "text">
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. Morbi id urna eget dui finibus fermentum eu ut purus. Sed molestie sapien ut purus ultricies fringilla. Nulla fringilla felis urna, in mattis lorem condimentum nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+      {{article_2_subtitle}}
     </p3>
      </div>
    </div>
-  <hr class="rounded">
+  <hr class="rounded">`
        <div class = "img_sub_article">
-      <img class="sub_article_img" src = "django_backend/django_backend/django_main/templates/main/images/sub_article_img.jpg" alt="Sub Article Img">
+      <img class="sub_article_img" src = {{article_3_img}} alt="Sub Article Img">
      <div class="img_sub_article_text">
       <h2>
-      Title of Article WIth Image
+      {{article_3_title}}
     </h2>
      <p2>
-       DD/MM/YYYY
+       {{article_3_date}}
      </p2>
     <p3 class = "text">
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. Morbi id urna eget dui finibus fermentum eu ut purus. Sed molestie sapien ut purus ultricies fringilla. Nulla fringilla felis urna, in mattis lorem condimentum nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+      {{article_3_subtitle}}
     </p3>
      </div>
    </div>
     <hr class="rounded">
        <div class = "img_sub_article">
-      <img class="sub_article_img" src = "django_backend/django_backend/django_main/templates/main/images/sub_article_img.jpg" alt="Sub Article Img">
+      <img class="sub_article_img" src = {{article_4_img}} alt="Sub Article Img">
      <div class="img_sub_article_text">
       <h2>
-      Title of Article WIth Image
+      {{article_4_img}}
     </h2>
      <p2>
-       DD/MM/YYYY
+       {{article_4_date}}
      </p2>
     <p3 class = "text">
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. Morbi id urna eget dui finibus fermentum eu ut purus. Sed molestie sapien ut purus ultricies fringilla. Nulla fringilla felis urna, in mattis lorem condimentum nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+      {{article_4_subtitle}}
     </p3>
      </div>
    </div>
@@ -82,14 +77,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada s
      <div class = "sub_article">
 
         <h2>
-        Title of Article WIthout Image
+          {{article_5_title}}
         </h2>
         <p2>
-        DD/MM/YYYY
+        {{article_5_date}}
         </p2>
         <p3 class = "text">
-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor.
+          {{article_5_subtitle}}
         </p3>
 
     </div>
@@ -97,14 +91,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada s
        <div class = "sub_article">
 
         <h2>
-        Title of Article WIthout Image
+          {{article_6_title}}
         </h2>
         <p2>
-        DD/MM/YYYY
+        {{article_6_date}}
         </p2>
         <p3 class = "text">
-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. 
+          {{article_6_subtitle}}
         </p3>
 
     </div>
@@ -112,14 +105,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada s
       <div class = "sub_article">
 
         <h2>
-        Title of Article WIthout Image
+        {{article_7_title}}
         </h2>
         <p2>
-        DD/MM/YYYY
+        {{article_7_date}}
         </p2>
         <p3 class = "text">
 
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. 
+          {{article_7_subtitle}}
         </p3>
 
     </div>
@@ -127,14 +120,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada s
       <div class = "sub_article">
 
         <h2>
-        Title of Article WIthout Image
+        {{article_8_title}}
         </h2>
         <p2>
-        DD/MM/YYYY
+        {{article_8_date}}
         </p2>
         <p3 class = "text">
 
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec malesuada sapien. Vestibulum dui est, viverra nec leo non, blandit tempus dui. Nulla iaculis felis a sem malesuada, molestie aliquam lacus venenatis. Proin non molestie dolor. 
+          {{article_8_subtitle}}
         </p3>
 
     </div>
