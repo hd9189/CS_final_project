@@ -6,7 +6,7 @@
   <form method="post" action="/submit_form/" class="form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" name="submit" href="thanks">Submit Article</button>
+    <button type="submit" name="submit" href="/thanks">Submit Article</button>
   </form>
 
 {% endblock %}

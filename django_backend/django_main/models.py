@@ -53,6 +53,7 @@ class Article(models.Model):
     # ForeignKey for objects
     # This links to the NewsArticlesList, and makes it automatically have a list/set of Article objects in it 
     title = models.CharField(max_length=200, default=False)
+    subtitle = models.CharField(max_length=9999, default=False)
     text = models.CharField(max_length=300)
     views = models.BigIntegerField(default=0)
     likes = models.BigIntegerField(default=0)
@@ -68,4 +69,6 @@ class Article(models.Model):
     def __str__(self):
         return self.text
 
+    class Meta:
+        ordering = ('date',)
     

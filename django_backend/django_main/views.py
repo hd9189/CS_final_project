@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Article
 from .forms import Submit_Form
 
@@ -19,26 +19,53 @@ class UploadImage(CreateAPIView):
 
 # Create your views here.
 
-def index(response, id):
-    return render(response, 'main/base.html', {}) # open dictionary
+def article_page(response, id):
+    article = Article.objects.get(id=id)
+    rec_articles = Article.objects.order_by('date')
 
-def home(response):
-    return render(response, 'main/home.html', {})
+
+    return render(response, 'main/article.html', {'article': article, 'recommended_articles': rec_articles}) # open dictionary
+
+def home_trending(response):
+    article_list = Article.objects.all().order_by('views')
+
+    article_list2 = article_list[0::2]
+    article_list3 = article_list[1::2]
+    return render(response, 'main/home.html', {'article1': article_list[0],'article_list2': article_list2, 'article_list3': article_list3 })
+
+def home_opinion(response):
+    article_list = Article.objects.all().filter('-opinion').order_by('date')
+
+    article_list2 = article_list[0::2]
+    article_list3 = article_list[1::2]
+
+    return render(response, 'main/home.html', {'article1': article_list[0],'article_list2': article_list2, 'article_list3': article_list3 })
+
+def home_recent(response):
+    article_list = Article.objects.all().order_by('date')
+    article_list2 = article_list[0::2]
+    article_list3 = article_list[1::2]
+    return render(response, 'main/home.html', {'article1': article_list[0],'article_list2': article_list2, 'article_list3': article_list3 })
+
 
 def submit_form(response):
     form = Submit_Form(response.POST)
 
-    if form.is_valid():
+    if response.method == 'POST' and form.is_valid():
         author = form.cleaned_data['AuthorFirstName'] + ' ' + form.cleaned_data['AuthorLastName']
         title = form.cleaned_data['Title']
+        subtitle = form.cleaned_data['Subtitle']
         text = form.cleaned_data['Text']
         email = form.cleaned_data['Email']
         tags = form.cleaned_data['Tags']
         opinion = form.cleaned_data['Opinion']
 
-        t = Article(author=author, title=title, text=text, email=email, tags=tags, opinion=opinion)
+        t = Article(author=author, title=title, subtitle=subtitle, text=text, email=email, tags=tags, opinion=opinion)
         t.save()
+        return HttpResponseRedirect("/thanks")
+    
     return render(response, "main/form.html", {"form":form})
+    
 
 def thanks(response):
     return render(response, 'main/thanks.html', {})

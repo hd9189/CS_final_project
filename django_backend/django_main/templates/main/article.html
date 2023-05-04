@@ -1,38 +1,40 @@
-{% extends "base.html"%}
+{% extends 'main/base.html' %}
 
 {% block content %}
 <div class="article_page">
-    <div class="byline">
-    <img src={{author_profile}} height= 50px width=50px> 
+  <div class="byline">
+    <img src={{article.authorimg}} height=50px width=50px>
     <div class="list_thing">
       <ul>
         <h2>
-              {{author_name}}
+          {{article.authorname}}
         </h2>
       </ul>
-      <ul>      <p1>{{article_date}}</p1></ul>
+      <ul>
+        <p1>{{article.date}}</p1>
+      </ul>
 
-    </h1>
+      </h1>
     </div>
-    </div>
-    <img src={{article_img}} class="article_img">
-    <h1 class="title">{{article_title}}</h1>
-    <h2 class="subtitle">{{article_subtitle}}</h2>
+  </div>
+  <img src={{article.img}} class="article_img">
+  <h1 class="title">{{article.title}}</h1>
+  <h2 class="subtitle">{{article.subtitle}}</h2>
+  <div class="tags">
+    {% for tag in tag_list %}
+    <button class="tag_bubble">{{tag}}</button>
+    {% endfor %}
 
-    <p3 class ="article_text">
-      {{article_text}}
-    </p3>
-  </div>
+  <p3 class="article_text">
+    {{article.text}}
+  </p3>
+</div>
+{ % for article in recommended_articles % }
   <hr class="rounded">
-  <div class="recommended_article">
-    <h1 class="title">{{rec_title_1}}</h1>
-    <h3 class="subtitle">{{rec_subtitle_1}}</h3>
-    <p2 class="article_text">{{rec_text_1}}</p2>
-  </div>
-  <hr class="rounded">
+
+  
 <div class="recommended_article">
-  <h1 class="title">{{rec_title_2}}</h1>
-  <h3 class="subtitle">{{rec_subtitle_2}}</h3>
-  <p2 class="article_text">{{rec_text_2}}</p2>
+  <h1 class="title">{{article.title}}</h1>
+  <h3 class="subtitle">{{article.subtitle}}</h3>
 </div>
 {% endblock %}

@@ -61,6 +61,20 @@ class Submit_Form(forms.Form):
                 }
             )
         )
+    
+    Subtitle = forms.CharField(
+        label="Subtitle",
+        max_length=9999,
+        required=False,
+        widget= forms.TextInput(
+            attrs={
+                'class': 'sub-title',
+                'name': 'sub-title',
+                'placeholder':'Enter Sub Title',
+                'required': 'True'
+                }
+            )
+        )
     Text = forms.CharField(
         label='Text',
         required=False,

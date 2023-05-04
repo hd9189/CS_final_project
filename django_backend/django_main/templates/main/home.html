@@ -2,140 +2,77 @@
 
 {% block content %}
 
-<div class="main_article">
-    <img src={{artile_1_img}} alt="Main Article Image">
+  <div class="main_article">
+    <img src={{article1.img}} alt="Main Article Image">
     <header class="main_article_text">
 
-       <a href= {{article_1_link}}>
-            <h1>
-          {{article_1_title}}
-              
-      </h1>
-       </a> 
+      <a href={{article1.id}}>
+        <h1>
+          {{article_1.title}}
+
+        </h1>
+      </a>
 
       <p1>
-       {{article_1_date}}, {{article_1_author}} 
+        {{article1.date}}, {{article1.author}}
       </p1>
       <p2 class="text">
-          {{article_1_subtitle}}
+        {{article1.subtitle}}
 
       </p2>
     </header>
 
-    
-</div>
-<hr class = "rounded">
-<div class="sub_articles">
-  <div class="left_side_articles">
-   <div class = "img_sub_article">
-      <img class="sub_article_img" src = {{article_2_img}} alt="Sub Article Img">
-     <div class="img_sub_article_text">
-      <h2>
-      {{article_2_title}}
-    </h2>
-     <p2>
-       {{article_2_date}}
-     </p2>
-    <p3 class = "text">
-      {{article_2_subtitle}}
-    </p3>
-     </div>
-   </div>
-  <hr class="rounded">`
-       <div class = "img_sub_article">
-      <img class="sub_article_img" src = {{article_3_img}} alt="Sub Article Img">
-     <div class="img_sub_article_text">
-      <h2>
-      {{article_3_title}}
-    </h2>
-     <p2>
-       {{article_3_date}}
-     </p2>
-    <p3 class = "text">
-      {{article_3_subtitle}}
-    </p3>
-     </div>
-   </div>
-    <hr class="rounded">
-       <div class = "img_sub_article">
-      <img class="sub_article_img" src = {{article_4_img}} alt="Sub Article Img">
-     <div class="img_sub_article_text">
-      <h2>
-      {{article_4_img}}
-    </h2>
-     <p2>
-       {{article_4_date}}
-     </p2>
-    <p3 class = "text">
-      {{article_4_subtitle}}
-    </p3>
-     </div>
-   </div>
-  <hr class="rounded">
+
   </div>
-  <div class="right_side_articles">
-     <div class = "sub_article">
-
-        <h2>
-          {{article_5_title}}
-        </h2>
-        <p2>
-        {{article_5_date}}
-        </p2>
-        <p3 class = "text">
-          {{article_5_subtitle}}
-        </p3>
-
-    </div>
   <hr class="rounded">
-       <div class = "sub_article">
+  <div class="sub_articles">
+    <div class="left_side_articles">
+      {% for article in article_list2 %}
+      <div class="img_sub_article">
+        <img class="sub_article_img" src={{article.img}} alt="Sub Article Image">
+        <div class="img_sub_article_text">
+          <a href={{article.id}}>
+            <h2>
+              {{article.title}}
+            </h2>
+          </a>
 
-        <h2>
-          {{article_6_title}}
-        </h2>
-        <p2>
-        {{article_6_date}}
-        </p2>
-        <p3 class = "text">
-          {{article_6_subtitle}}
-        </p3>
+          <p2>
+            {{article.date}}
+          </p2>
+          <p3 class="text">
+            {{article.subtitle}}
+          </p3>
+        </div>
+      </div>
+      <hr class="rounded">
+      {% endfor %}
 
     </div>
-      <hr class="rounded">
-      <div class = "sub_article">
+    <div class="right_side_articles">
+      {% for article in article_list3 %}
+      <div class="sub_article">
+        <a href=article.id>
+          <h2>
+            {{article.title}}
+          </h2>
+        </a>
 
-        <h2>
-        {{article_7_title}}
-        </h2>
         <p2>
-        {{article_7_date}}
+          {{article.date}}
         </p2>
-        <p3 class = "text">
-
-          {{article_7_subtitle}}
+        <p3 class="text">
+          {{article.subtitle}}
         </p3>
 
-    </div>
+      </div>
       <hr class="rounded">
-      <div class = "sub_article">
-
-        <h2>
-        {{article_8_title}}
-        </h2>
-        <p2>
-        {{article_8_date}}
-        </p2>
-        <p3 class = "text">
-
-          {{article_8_subtitle}}
-        </p3>
+      {% endfor %}
 
     </div>
-      <hr class="rounded">
   </div>
-</div>
 </body>
 <div class="footer">
-  
+
 </div>
 {% endblock %}
