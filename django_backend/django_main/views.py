@@ -21,28 +21,31 @@ class UploadImage(CreateAPIView):
 
 def article_page(response, id):
     article = Article.objects.get(id=id)
-    rec_articles = Article.objects.order_by('date')
+    rec_articles = Article.objects.filter('-approved').order_by('date')
+
+    # Increase the view count by 1
+    article.views += 1
+    article.save()
 
 
     return render(response, 'main/article.html', {'article': article, 'recommended_articles': rec_articles}) # open dictionary
 
 def home_trending(response):
-    article_list = Article.objects.all().order_by('views')
+    article_list = Article.objects.all().filter(approved=True).order_by('views')
 
     article_list2 = article_list[0::2]
     article_list3 = article_list[1::2]
     return render(response, 'main/home.html', {'article1': article_list[0],'article_list2': article_list2, 'article_list3': article_list3 })
 
 def home_opinion(response):
-    article_list = Article.objects.all().filter('-opinion').order_by('date')
-
+    article_list = Article.objects.filter(approved=True, opinion=False).order_by('date')
     article_list2 = article_list[0::2]
     article_list3 = article_list[1::2]
-
     return render(response, 'main/home.html', {'article1': article_list[0],'article_list2': article_list2, 'article_list3': article_list3 })
 
+
 def home_recent(response):
-    article_list = Article.objects.all().order_by('date')
+    article_list = Article.objects.all().filter(approved=True).order_by('date')
     article_list2 = article_list[0::2]
     article_list3 = article_list[1::2]
     return render(response, 'main/home.html', {'article1': article_list[0],'article_list2': article_list2, 'article_list3': article_list3 })

@@ -29,12 +29,12 @@
     {{article.text}}
   </p3>
 </div>
-{ % for article in recommended_articles % }
+{% for article in recommended_articles %}
   <hr class="rounded">
-
-  
-<div class="recommended_article">
-  <h1 class="title">{{article.title}}</h1>
-  <h3 class="subtitle">{{article.subtitle}}</h3>
-</div>
+    
+  <div class="recommended_article">
+    <h1 class="title">{{article.title}}</h1>
+    <h3 class="subtitle">{{article.subtitle}}</h3>
+  </div>
+{% endfor %}
 {% endblock %}

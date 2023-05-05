@@ -95,4 +95,5 @@ class Submit_Form(forms.Form):
         label='Opnion',
         required=False
         )
-    # ProfilePicture = forms.ImageField(upload_to='profile_pic/%Y/%m/%d/', max_length=255, null=True)
+    
+    # ProfilePicture = forms.ImageField()
