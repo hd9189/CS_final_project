@@ -1,4 +1,6 @@
 from django import forms
+from cloudinary.forms import CloudinaryFileField
+
 
 TAGS = (('Sports', 'Sports'),
               ('Politics', 'Politics'),
@@ -95,5 +97,11 @@ class Submit_Form(forms.Form):
         label='Opnion',
         required=False
         )
-    
-    # ProfilePicture = forms.ImageField()
+    ProfilePicture = CloudinaryFileField(
+        label = 'Profile Picture',
+        required=False
+    )
+    TitlePicture = CloudinaryFileField(
+        label = 'Title Picture',
+        required=False,
+    )

@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from multiselectfield import MultiSelectField
+from cloudinary.models import CloudinaryField
 #terminal comands
 # python manage.py makemigrations
 # python manage.py migrate
@@ -62,7 +63,8 @@ class Article(models.Model):
     tags = MultiSelectField(choices=TAGS, max_choices=3, max_length=20, default=None)
     opinion = models.BooleanField(default=True)
     email = models.EmailField(default='example@email.com')
-    # profile_pic = models.ImageField()
+    profile_pic = CloudinaryField('profile_pic', default=False)
+    title_img = CloudinaryField('title_img', default=False)
     approved = models.BooleanField(default=False)
     REQUIRED_FIELDS = ['title', 'text', 'author','email', 'date','approved', 'tags', 'opinion']
     

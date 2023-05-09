@@ -3,3 +3,4 @@ requests>=2.28.2
 django-taggit>=3.1.0
 pillow>=9.4.0
 django-multiselectfield>=0.1.12
+django-cloudinary-storage>=1.4.0

@@ -52,7 +52,7 @@ def home_recent(response):
 
 
 def submit_form(response):
-    form = Submit_Form(response.POST)
+    form = Submit_Form(response.POST, response.FILES)
 
     if response.method == 'POST' and form.is_valid():
         author = form.cleaned_data['AuthorFirstName'] + ' ' + form.cleaned_data['AuthorLastName']
@@ -62,6 +62,9 @@ def submit_form(response):
         email = form.cleaned_data['Email']
         tags = form.cleaned_data['Tags']
         opinion = form.cleaned_data['Opinion']
+        profile_pic = form.cleaned_data['ProfilePicture']
+        title_img = form.cleaned_data['TitlePicture']
+
 
         t = Article(author=author, title=title, subtitle=subtitle, text=text, email=email, tags=tags, opinion=opinion)
         t.save()

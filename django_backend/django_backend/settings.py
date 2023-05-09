@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
     'taggit',
     'multiselectfield',
     'rest_framework',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -119,13 +123,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-cloudinary.config(
-    cloud_name=os.environ.get("ddmhkhmvz"),
-    api_key=os.environ.get("395398457716615"),
-    api_secret=os.environ.get("uitdhr59qA5C7war7dveY_aGonU"),
-)
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -135,3 +132,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+cloudinary.config(
+    cloud_name=os.environ.get("ddmhkhmvz"),
+    api_key=os.environ.get("395398457716615"),
+    api_secret=os.environ.get("uitdhr59qA5C7war7dveY_aGonU"),
+)
