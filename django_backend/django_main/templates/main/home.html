@@ -2,75 +2,93 @@
 
 {% block content %}
 
-  <div class="main_article">
-    <img src={{article1.img}} alt="Main Article Image">
-    <header class="main_article_text">
+  
+  <div onclick="location.href='{{article1.id}}';" class="main_article">
+    <img src={{article1.img}} alt="Main Article Image" class="main_article_img">
+    <div class="main_article_text">
 
-      <a href={{article1.id}}>
-        <h1>
-          {{article_1.title}}
+      <h1 class="title">
+        <a href={{article1.id}}>
+          {{article1.title}}
+        </a>
+      </h1>
 
-        </h1>
-      </a>
-
-      <p1>
+      <p1 class="subtitle">
         {{article1.date}}, {{article1.author}}
       </p1>
       <p2 class="text">
         {{article1.subtitle}}
 
       </p2>
-    </header>
+      <div class="likes_views">
+        {{article1.views}}<img src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1685109199/1_mnb0tb.png" class="likes_views_img">
+      </div>
 
+    </div>
 
   </div>
-  <hr class="rounded">
-  <div class="sub_articles">
-    <div class="left_side_articles">
-      {% for article in article_list2 %}
-      <div class="img_sub_article">
-        <img class="sub_article_img" src={{article.img}} alt="Sub Article Image">
-        <div class="img_sub_article_text">
-          <a href={{article.id}}>
-            <h2>
-              {{article.title}}
+  <hr class="main_article_divider">
+    <div class="sub_articles">
+      <div class="left_side_articles">
+        {% for article in article_list2 %}
+        <div onclick="location.href='{{article.id}}';" class="img_sub_article">
+          <img class="sub_article_img" src={{article.img}} alt="Sub Article Image">
+          <div class="img_sub_article_text">
+
+            <h2 class="title">
+              <a href={{article.id}}>
+                {{article.title}}
+              </a>
             </h2>
-          </a>
+
+
+            <p2>
+              {{article.date}}
+            </p2>
+            <p3 class="text">
+              {{article.subtitle}}
+            </p3>
+
+            <div class="likes_views">
+              {{article.views}}<img src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1685109199/1_mnb0tb.png" class="likes_views_img">
+            </div>
+          </div>
+
+
+        </div>
+        <hr class="rounded">
+        {% endfor %}
+
+      </div>
+      <div class="right_side_articles">
+        {% for article in article_list3 %}
+        <div onclick="location.href='{{article.id}}';" class="sub_article">
+
+          <h2 class="title">
+            <a href={{article.id}}>
+              {{article.title}}
+            </a>
+          </h2>
 
           <p2>
             {{article.date}}
           </p2>
           <p3 class="text">
-            {{article.subtitle}}
+            <a href={{article.id}}>
+              {{article.subtitle}}
+            </a>
+
           </p3>
+        <div class="likes_views">
+          {{article1.views}}<img src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1685109199/1_mnb0tb.png" class="likes_views_img">
         </div>
-      </div>
-      <hr class="rounded">
-      {% endfor %}
+        </div>
 
-    </div>
-    <div class="right_side_articles">
-      {% for article in article_list3 %}
-      <div class="sub_article">
-        <a href=article.id>
-          <h2>
-            {{article.title}}
-          </h2>
-        </a>
-
-        <p2>
-          {{article.date}}
-        </p2>
-        <p3 class="text">
-          {{article.subtitle}}
-        </p3>
+        <hr class="rounded">
+        {% endfor %}
 
       </div>
-      <hr class="rounded">
-      {% endfor %}
-
     </div>
-  </div>
 </body>
 <div class="footer">
 

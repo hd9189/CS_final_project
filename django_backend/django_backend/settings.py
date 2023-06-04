@@ -8,6 +8,8 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
+
+Modified by Hugh Ding 2023
 """
 
 from pathlib import Path
@@ -140,3 +142,9 @@ cloudinary.config(
     api_key=os.environ.get("395398457716615"),
     api_secret=os.environ.get("uitdhr59qA5C7war7dveY_aGonU"),
 )
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'ddmhkhmvz',
+    'API_KEY': '395398457716615',
+    'API_SECRET': 'uitdhr59qA5C7war7dveY_aGonU'
+}

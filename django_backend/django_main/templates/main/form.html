@@ -3,7 +3,7 @@
 {% block title %} Submit an Article {% endblock %}
 
 {% block content %}
-  <form method="post" action="/submit_form/" class="form">
+  <form method="post" action="/submit_form/" class="form" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" name="submit" href="/thanks">Submit Article</button>
