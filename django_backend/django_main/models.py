@@ -27,6 +27,7 @@ from cloudinary.models import CloudinaryField
  
 
 from django.db import models
+from django.utils import timezone
 from cloudinary.models import CloudinaryField
 
 # Source: https://www.youtube.com/watch?v=sm1mokevMWk&t=9662s
@@ -81,5 +82,5 @@ class Article(models.Model):
     approved = models.BooleanField(default=False)
     REQUIRED_FIELDS = ['title', 'text', 'author','email', 'date','approved', 'tags', 'opinion']
     
-    def __str__(self):
-        return self.text
+    # def __str__(self):
+    #     return self.text

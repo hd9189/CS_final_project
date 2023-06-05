@@ -17,6 +17,11 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
+from django.conf import settings
+from django.conf.urls.static import static
+import dotenv
+dotenv.load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -137,10 +142,38 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# cloudinary.config(
+#     cloud_name=os.getenv("ddmhkhmvz"),
+#     api_key=os.getenv("395398457716615"),
+#     api_secret=os.getenv("uitdhr59qA5C7war7dveY_aGonU"),
+#     secure=True
+# )
+
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': "ddmhkhmvz",
+#     'API_KEY': "395398457716615",
+#     'API_SECRET': "uitdhr59qA5C7war7dveY_aGonU"
+# }
+
+# CLOUDINARY = {
+#     'cloud_name': os.getenv('ddmhkhmvz'),
+#     'api_key': os.getenv('395398457716615'),
+#     'api_secret': os.getenv('uitdhr59qA5C7war7dveY_aGonU')
+# }
+
+CLOUDINARY = {
+    'cloud_name': 'ddmhkhmvz',
+    'api_key': '395398457716615',
+    'api_secret': 'uitdhr59qA5C7war7dveY_aGonU'
+}
+
+
+
+
 cloudinary.config(
-    cloud_name=os.environ.get("ddmhkhmvz"),
-    api_key=os.environ.get("395398457716615"),
-    api_secret=os.environ.get("uitdhr59qA5C7war7dveY_aGonU"),
+    cloud_name="ddmhkhmvz",
+    api_key="395398457716615",
+    api_secret="uitdhr59qA5C7war7dveY_aGonU",
 )
 
 CLOUDINARY_STORAGE = {

@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Article
 from .forms import Submit_Form
-
+import cloudinary
+from cloudinary.models import CloudinaryField
+from cloudinary.forms import CloudinaryFileField
+from django.conf import settings
+from rest_framework.generics import CreateAPIView
+from rest_framework.parsers import MultiPartParser
 
 # views.py, v1.5, May 29th 2023, Hugh Ding
 
@@ -98,8 +103,18 @@ def submit_form(response):
         Render: Combines a form.html with the form and returns an HttpResponse object with that rendered text.
     '''
     form = Submit_Form(response.POST, response.FILES)
+    print(settings.CLOUDINARY)
+    print(settings.CLOUDINARY_STORAGE)
+    print(settings.CLOUDINARY['cloud_name'])
+    print(settings.CLOUDINARY['api_key'])
+    print(settings.CLOUDINARY['api_secret'])
+    print(print(cloudinary.config().cloud_name))
+    print(cloudinary.config().api_key)
+    print(cloudinary.config().api_secret)
 
     if response.method == 'POST' and form.is_valid():
+        print(settings.CLOUDINARY)
+        print(settings.CLOUDINARY_STORAGE)
         author = form.cleaned_data['AuthorFirstName'] + ' ' + form.cleaned_data['AuthorLastName']
         title = form.cleaned_data['Title']
         subtitle = form.cleaned_data['Subtitle']
@@ -129,6 +144,7 @@ def submit_form(response):
         return HttpResponseRedirect("/thanks")
     
     return render(response, "main/form.html", {"form":form})
+    
     
 def getTrueTags(tags, article):
     '''
@@ -160,7 +176,7 @@ def search(response):
     if response.method =='POST':
 
         # get the answers from form
-        text = response.POST.get("search_text")
+        t = response.POST.get("search_text")
         tags = []
         # appends to tags list if true
         if response.POST.get("Religion"): tags.append("Relgion")
@@ -176,7 +192,7 @@ def search(response):
         article_list = list(Article.objects.all().filter(approved=True).order_by('date'))
         article_list2 = []
         for article in article_list:
-            if text in article.title or text in article.subtitle or text in article.text:
+            if t in article.title or t in article.subtitle:
                 article_list2.append(article)
 
         for index in range(len(article_list2)-1):
@@ -187,7 +203,7 @@ def search(response):
                 placeholder -= 1
             article_list2[placeholder+1] = article_list2[index]
     
-    return render(response, "main/search.html", {"article_list":article_list2})
+    return render(response, "main/search.html", {"article_list":article_list})
 
 
 

@@ -1,6 +1,9 @@
 # urls to go to the different views in views.py
 from django.urls import path
 from . import views # . refers to the django_main file
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 # forms.py, v1.3, June 1st 2023, Hugh Ding
 
