@@ -1,18 +1,26 @@
+<!-- 
+home.html
+Ver. 1.0
+June 4, 2023
+This file is the home page for the website, it displays new or trending articles that have been published, and clicking on those articles will lead to a separate page that has the full article
+-->
+<!-- Copies code from base.html in front of the rest of the file-->
 {% extends 'main/base.html' %}
 
+<!-- Section of code that is unique to this file-->
 {% block content %}
 
-  
+  <!-- Div that contains the top article displayed in the homepage, onclick script leads to the page of the article --> 
   <div onclick="location.href='{{article1.id}}';" class="main_article">
-    <img src={{article1.img}} alt="Main Article Image" class="main_article_img">
+    <img src={{article1.img} alt="Main Article Image" class="main_article_img">
     <div class="main_article_text">
-
+      
       <h1 class="title">
         <a href={{article1.id}}>
           {{article1.title}}
         </a>
       </h1>
-
+      <!-- Puts dates and author together in a row --> 
       <p1 class="subtitle">
         {{article1.date}}, {{article1.author}}
       </p1>
@@ -20,6 +28,7 @@
         {{article1.subtitle}}
 
       </p2>
+      <!-- Div for viewcount--> 
       <div class="likes_views">
         {{article1.views}}<img src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1685109199/1_mnb0tb.png" class="likes_views_img">
       </div>
@@ -27,9 +36,13 @@
     </div>
 
   </div>
+<!-- Line to separate the top article from the two columns of articles below --> 
   <hr class="main_article_divider">
     <div class="sub_articles">
-      <div class="left_side_articles">
+      <!-- First column of articles, takes up half of the space. This column has images alongside them--> 
+      <div class="article_columns">
+
+        <!-- For loop that displays each article listed --> 
         {% for article in article_list2 %}
         <div onclick="location.href='{{article.id}}';" class="img_sub_article">
           <img class="sub_article_img" src={{article.img}} alt="Sub Article Image">
@@ -56,14 +69,18 @@
 
 
         </div>
+        <!-- Divider between each article in the column--> 
         <hr class="rounded">
         {% endfor %}
 
       </div>
-      <div class="right_side_articles">
-        {% for article in article_list3 %}
-        <div onclick="location.href='{{article.id}}';" class="sub_article">
 
+      <!-- Second column of articles, these ones do not have an image alongside them--> 
+      <div class="article_columns">
+        <!-- For loop to display all of the articles in this column-->
+        {% for article in article_list3 %}
+        <!-- Because there are no images for this column, The text will take up the entire space -->
+        <div onclick="location.href='{{article.id}}';" class="sub_article">
           <h2 class="title">
             <a href={{article.id}}>
               {{article.title}}
@@ -90,6 +107,8 @@
       </div>
     </div>
 </body>
+
+<!--Footer to show the end of the page --> 
 <div class="footer">
 
 </div>

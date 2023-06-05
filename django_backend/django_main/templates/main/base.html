@@ -1,12 +1,21 @@
+<!--
+base.html
+Ver. 1.0
+June 4, 2023
+This file serves as the base template for other html files, which means that what is here will be put onto the other files, so that the code isn't repetitive (nav bar, preamble)
+-->
+
 <!DOCTYPE html>
 <html>
 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Meritales Newspaper</title>
+    <title>replit</title>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <style>
+
+      /* sets all baseline stylings, such as margins and font*/
       html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
     padding: 0;
@@ -19,25 +28,32 @@
   color:#333333;
   text-decoration: none;
 }
+
+
+/* styling for div that changes where the content of the website is*/
 .content_area{
+  /* scales width screen size, up to a maximum of 1000 px */
   width:80%;
   max-width:1000px;
   display: flex;
+  /* centers itself*/
   justify-content: center;
   align-items: center;
   margin: auto;
 
 }
+      
 html, body {
   display:block;
+  /* sets background color of the website */
   background-color: #f5f5f5;
   justify-content:center;
 
   position:relative;
-
-  
 }
 
+      /* Stylings for Nav bar, copied the transitions and how to space the items in nav bar from www.youtube.com/watch?v=sm1mokevMWk
+/* Adds stylings to the text elements in the nav bar*/
 nav li a strong{
 font-weight: 500;
 font-size: 16px;
@@ -47,6 +63,8 @@ color: white;
 padding: 0px 10px
   
 }
+
+
 nav strong{
 margin-left:4px;
 margin-right:auto;
@@ -59,6 +77,8 @@ color: white;
 padding: 0px 20px
   
 }
+
+/* stylings for the nav bar, changes colour to Maroon*/
 nav{
 display:flex;
 justify-content:flex-end;
@@ -66,16 +86,19 @@ align-items: center;
 padding:4px;
 background-color:#800000;
 }
+
+/* Style for merivale logo in Nav bar*/      
 .logo{
 height: 50px;
 margin-left:5px;
 margin-right:4px;
 }
 
-
+/* Makes list objects not have dots or numbers in front in the nav bar*/
 .nav_links{
 list-style:none;
 }
+
 
 .nav_links li{
 display:inline-block;
@@ -85,15 +108,19 @@ padding: 0px 5px;
   text-decoration: none;
 }
 
+/*  Makes transitions smoother*/
 .nav_links li a {
   transition: all 0.3s ease 0s;
     color:white;
   text-decoration: none;
 }
 
+/* links in Nav change colour when hovered over*/
 .nav_links li a:hover{
   color:#5d5d5d;
 }
+
+/* Stylings for he top article kf home page*/
 .main_article{
   justify-self:center;
   height:200px;
@@ -107,6 +134,7 @@ padding: 0px 5px;
   cursor:pointer;
 }
 
+
 .main_article a{
   transition: all 0.3s ease 0s;
   padding:0px;
@@ -117,6 +145,7 @@ padding: 0px 5px;
   color:maroon;
 }
 
+
 .main_article_text{
 padding:0px 20px;
 display:flex;
@@ -125,12 +154,15 @@ flex-flow:column nowrap;
   flex-grow:1;
 }
 .main_article_img{
+  /* Set size for the article, and crops imagebif it doesn't fit*/
   width:258px;
   height:200px;
   object-fit:cover;
 }
 
+  /* Stylings for the size and alignment of the two columns of articles in the home page*/
 .sub_articles{
+  
   display:flex;
   justify-content:center;
   justify-self:center;
@@ -141,10 +173,13 @@ flex-flow:column nowrap;
   align-items:center;
   margin:auto;
 }
+
+/* Changes colour of any links in the columns to maroon when hovered*/
 .sub_articles a:hover{
   color:maroon;
 }
 
+/* sets size of each article on the left column in the homepage*/
 .img_sub_article {
   display:flex;
   width:100%;
@@ -152,6 +187,7 @@ flex-flow:column nowrap;
   height:200px;
 }
 
+/* Makes text of articles on left side of homepage not overflow*/
 .img_sub_article_text{
 display:flex;
   flex-grow:1;
@@ -159,18 +195,22 @@ flex-flow:column nowrap;
     overflow:hidden;
   white-space:normal;
 }
+
+  
 .text{
   white-space:normal;
   text-overflow:clip;
   line-height:1.8;
 }
+/* Sets size of article in left column of home page, crops them if they don't fit*/      
 .sub_article_img{
 padding-right:10px;
   height:150px;
   width:194px;
   object-fit:cover;
-
 }
+
+  /* Size of articles on right side of home page*/
 .sub_article{
   margin-left:2px;
   text-decoration:none;
@@ -182,8 +222,9 @@ padding-right:10px;
   display:flex;
 
   overflow:hidden;
-
 }
+
+
 .sub_article main_article_text h1 h2 text{
   transition: all 0.3s ease 0s;
 }
@@ -191,15 +232,16 @@ padding-right:10px;
 .sub_article main_article_text text h1 h2:hover{
   color:maroon;
 }
-  
+
+ /* divider between top article and those below in home page*/    
 .main_article_divider{
 width:80%;
 max-width:1000px;
   align-self: center;
   justify-self:center;
   display:block;
-  
 }
+/* divider for the articles in columns in home page*/      
 .rounded{
 width:100%;
 max-width:1000px;
@@ -207,27 +249,22 @@ max-width:1000px;
   justify-self:center;
   display:block;
 }
+      
 .list_thing{
 list-style-type:none;
   display:inline-block;
-  
 }
 
-.left_side_articles{
+/* Sets width for the columns in home page*/
+.article_columns{
   width:50%;
   max-width:500px;
   display:flex;
   flex-flow: column nowrap;
     gap:20px;
 }
-.right_side_articles{
-  width:50%;
-  max-width:500px;
-  display:flex;
-  flex-flow: column nowrap;
-  gap:20px;
-}
 
+      
 .footer{
 display:flex;
 height:80px;
@@ -237,6 +274,7 @@ padding:2px;
 background-color:#817474;
 }
 
+/* Styling for div that displays the article in the individual article pages.  */
 .article_page{
   display:flex;
   margin:auto;
@@ -248,13 +286,24 @@ background-color:#817474;
   justify-content: center;
   padding:10px 20px;
 }
+
 .byline{
 display:flex;
   flex-flow:row nowrap;
 }
+/* Sets size for profile picture of author in individual article page, crops it into a circle. Comes from https://stackoverflow.com/questions/28700841/how-to-make-a-circular-image-in-css */       
+.profile{
+  clip-path: circle();
+  height:50px;
+  width:50px;
+  
+}
+/* Sets size for Images in individual article page, crops if too big */
 .article_img{
   width:100%;
   padding:10px 0px;
+  max: height 400px;
+  object-fit:cover;
 }
 
 .title{
@@ -268,7 +317,6 @@ display:flex;
 
 }
 .tags{
-
 display:flex;
 flex-flow:row;
 }
@@ -276,11 +324,12 @@ flex-flow:row;
   border-radius:10px;
   background-color:#d6d6d6;
   margin:5px 10px;
-
   padding:2px 5px;
   transition: all 0.3s ease 0s;
 }
+      
 .tag_bubble:hover{background-color:#b3b3b3}
+      
 .article_text{
   padding:0px 10px;
   white-space:normal;
@@ -288,17 +337,22 @@ flex-flow:row;
   overflow:hidden;
   line-height:1.8;
 }
-
+/*Div that displays the recommended articles underneath the actual article in the individual article page */
 .recommended_article{
+  margin-top:5px;
   display:flex;
   flex-flow:column nowrap;
   margin:auto;
-
-  width:1000px;
+  width: 80%;
+  max-width:1000px;
   justify-self:center;
   justify-content:center;
 }
 
+      /* Changes colour of titles and subtitles of recommended articles on hover */ 
+.recommended_article a:hover{color:maroon}
+
+/* Styling for the form in the submit an article page */
 form {
   max-width: 500px;
   margin: 0 auto;
@@ -308,6 +362,7 @@ form {
   background-color: #f2f2f2;
 }
 
+/* Styling for the labels beside checkboxes in the submit an article page*/
 form label {
   display: block;
   margin-bottom: 10px;
@@ -339,34 +394,29 @@ form input[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
+/* Styling for the search bar in the base template, the nav bar*/
 .search_bar {
   background-color: #c1c3c2;
   display:inline-block;
   width:250px;
   height:34px;
-
   margin-right:5px;
   border: 2px black solid;
 }
+  /* This div makes it so that the list of tags display vertically rather than horizontally*/
 .search_column{
   display:none;
   flex-flow:column;
   width:50%;
-  
 }
+    
 .search_checkbox{
 width:100px;
-  
-}
-.profile{
-  clip-path: circle();
-  height:50px;
-  width:50px;
-  
 }
 
+/* Styling the dropdown div of check boxes in the search bar*/
+/* The CSS for the dropwdown content was copied then adapted from www.w3schools.com/howto/howto_css_dropdown.asp to make the dropdwon actuallty dropdown*/
 .dropdown {
-
   display:flex;
   margin:0px 0px;
   padding:0px;
@@ -374,15 +424,19 @@ width:100px;
   background:maroon;
 }
 
+/* Content within the dropdown div styling*/
 .dropdown_content {
+  /* 'display:none' makes the content not show until the display is changed when the user hovers over the search bar */
   display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 250px;
   margin-top:34px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* Display the dropdown over whatever is under it on that page */
   z-index: 1;
 }
+
 
 .dropdown_content a {
   color: black;
@@ -390,18 +444,22 @@ width:100px;
   text-decoration: none;
   display: block;
 }
+
+/* Makes the labels go beside the checkboxes in the tag dropdown */
 .search_label{
 font-size: 16px;
   margin:0px;
   display:inline-block;
-  
 }
+      
 .dropdown_content a:hover {background-color: #ddd;}
 
+/* Shows the content in the dropdown when the displayed search bar is hovered*/
 .dropdown:hover .search_column{display:flex;}.dropdown_content {display: flex; flex-flow:row;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+/* Styling for the search button beside the search bar */
 .search_icon{
 height:30px;
 background:#c1c3c2;
@@ -411,9 +469,11 @@ background:#c1c3c2;
   transition: all 0.3s ease 0s;
 }
 
+  /* Darken the icon when it is hovered over */
 .search_icon:hover{ background:#9e9e9e}
 
 
+  /* Styling for div that contains the view count, places it at the bottom right of it's container*/
 .likes_views{
   height:20px;
   display:flex;
@@ -422,40 +482,44 @@ background:#c1c3c2;
   align-self:flex-end;
   margin-top:auto;
   width:fit_content;
-
 }
+
+ /* Styling for the view icon in the viewcount */     
 .likes_views_img{
   padding:0px 2px;
   margin:0px;
   height:20px;
   width:20px;
 }
-.like_button_img{
-  height:30px;
-  width:30px;
-  background-color:transparent;
 
+
+.submitted{
+    margin: 0; 
+    padding: 0; 
+    font-size: 36px;
+    color: #333333;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.like_button{
-  background-color:white;
-  border:transparent 0px;
 
-
-} 
-.like_button_img:hover {filter: sepia(100%) hue-rotate(180deg)}
     </style>
   </head>
 
   <body>
     
     <nav>
+      <!-- Keeps the content of the page within the middle 1000 px of the page-->
       <div class="content_area">
 
+        <!-- Logo and Title of the page-->
       <img class="logo" src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1684326646/xrudrba5vq3cceleofgi.png" alt="Merivale Logo">
-      
       <strong>
       Merivale News
       </strong>
+        <!-- Links at the top of the page, to sort by different metrics, or to submit an article of their own --> 
         <ul class ="nav_links">
           <li><a href='/'>Recent</a></li>
           <li><a href='/trending'>Trending</a></li>
@@ -463,11 +527,14 @@ background:#c1c3c2;
           <li><a href='/submit_form'>Submit an Article</a></li>
         </ul>
 
+        <!-- Form for the search bar, when submitted it goes to a separate page--> 
         <form class="dropdown" action="/search/" method="post">
           {% csrf_token %}
-
+          <!-- Actual search bar that you can enter text in --> 
           <input type="search" class="search_bar" name="search_text">
+          <!-- Content that does not display unless search bar is hovered over--> 
           <div class="dropdown_content">
+            <!-- Column of tags, each tag has a checkbox and a label that indicate it in the form--> 
             <ul class="search_column">
               <div>
                 <input type="checkbox" name="Religion" id="Religion"><label for="Religion"
@@ -502,15 +569,17 @@ background:#c1c3c2;
                 <input type="checkbox" name="School" id="School"><label for="School" class='search_label'>School</label>
               </div>
             </ul>
-  
           </div>
+          <!-- The search icon is the button to submit the form--> 
           <input type="image" src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1685109678/search_i1zeqs.png" class="search_icon" alt="Search">
         </form>
       </div>
           
     </nav>
+
+  <!-- Between '{% block content %}' and '{% endblock %}' is where the unique content of each page goes -->
    {% block content %}
    {% endblock %}
 
   </body>
-</html>
+  </html>

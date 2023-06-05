@@ -1,14 +1,23 @@
+<!-- 
+article.html
+Ver. 1.0
+June 4, 2023
+This file is the page that displays the full article, alongside information such as the author, publication date and genre tags. It also recommends other articles beneath the full article.
+-->
+
+
+<!-- This uses the Django template system to put include base.html in any file that extends it; The nav bar will show up on every page -->
 {% extends 'main/base.html' %}
 
-
-
-
-
+<!-- block of unique content for each page-->
 {% block content %}
-
+<!-- Div creates area that is different colour from rest of page and centered.-->
   <div class="article_page">
+    <!-- Div that orders the elements horizontally for the byline -->
     <div class="byline">
       <img src={{article.profile_pic_url}} class="profile">
+
+
       <div class="list_thing">
         <ul>
           <h2>
@@ -25,26 +34,38 @@
     <img src={{article.img}} class="article_img">
     <h1 class="title">{{article.title}}</h1>
     <h2 class="subtitle">{{article.subtitle}}</h2>
-    <div class="tags">
+
+<!-- Div that Organizes the tags horizontally --> 
+   <div class="tags">
+     <!-- For loop that makes a bubble for each tag-->
       {% for tag in tag_list %}
       <button class="tag_bubble">{{tag}}</button>
       {% endfor %}
     </div>
+
+<!-- for loop places line breaks between each paragraph of the article -->
     <p3 class="article_text">
-      {% for line in article.text %}
+      {% for line in article.text %}3
       {{line}}
       <br><br>
       {% endfor %}
     </p3>
   </div>
+<!-- line divider between the main article and the recommended articles below -->
+
   <hr class="main_article_divider">
-  {% for articles in recommended_articles %}
-
-
-  <div class="recommended_article">
+  
+<!-- For loop that displays each recommended article-->
+{% for articles in recommended_articles %}
+  <div class="recommended_article" onclick="location.href='{{article1.id}}';">
     <h1 class="title">{{articles.title}}</h1>
     <h3 class="subtitle">{{articles.subtitle}}</h3>
+     <div class="likes_views">
+          {{article.views}}<img src="https://res.cloudinary.com/ddmhkhmvz/image/upload/v1685109199/1_mnb0tb.png" class="likes_views_img">
+        </div>
   </div>
     <hr class="main_article_divider">
   {% endfor %}
+
+<!-- End of content that is unique to this page-->
 {% endblock %}

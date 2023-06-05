@@ -1,10 +1,24 @@
+<!-- 
+search.html
+Ver. 1.0
+June 4, 2023
+This file Shows the results when the user searches up articles either by text or by genre.
+-->
+
 {% extends 'main/base.html'%}
 {% block content %}
+<!-- For loop using django template that displays each article that meet search parameters-->
 {% for article in article_list%}
-<div class="recommended_article">
-    <h1 class="title"><a href={{article.id}}>{{article.title}}</a></h1>
-    <h3 class="subtitle"><a href={{article.id}}>{{article.subtitle}}</a></h3>
+<!-- Div that sets size of the recommended articles,  -->
+<div class="recommended_article" onclick="location.href='{{article1.id}}';" >
+  <!-- Title and subtitle with links to the article-->
+  <h1 class="title"><a href={{article.id}}>{{article.title}}</a></h1>
+  <h3 class="subtitle"><a href={{article.id}}>{{article.subtitle}}</a></h3>
+  <!--View count -->
+   <div class="likes_views">
+            {{article.views}}<img src="/images/view.png" class="likes_views_img">
+          </div>
+<!-- Divider between the different articles in the recommended article list --> 
+<hr class="rounded">
 </div>
-{% endfor %}
-
 {% endblock %}
