@@ -10,7 +10,7 @@ This file Shows the results when the user searches up articles either by text or
 <!-- For loop using django template that displays each article that meet search parameters-->
 {% for article in article_list%}
 <!-- Div that sets size of the recommended articles,  -->
-<div class="recommended_article" onclick="location.href='{{article1.id}}';" >
+<div class="recommended_article" onclick="location.href='{{article.id}}';" >
   <!-- Title and subtitle with links to the article-->
   <h1 class="title"><a href={{article.id}}>{{article.title}}</a></h1>
   <h3 class="subtitle"><a href={{article.id}}>{{article.subtitle}}</a></h3>
