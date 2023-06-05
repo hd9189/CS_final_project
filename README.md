@@ -19,7 +19,7 @@ The name of this project is called Meritales Newspaper, a news website made for 
 * sqlparse>=0.4.3
 
 ## Known Bugs
-* Searching and Filtering for keywords and tags do not work, this will not cause the project to crash
+None at the moment
 
 ## Support
 Deverlopers' Emails

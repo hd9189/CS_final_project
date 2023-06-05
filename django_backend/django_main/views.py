@@ -3,11 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Article
 from .forms import Submit_Form
 import cloudinary
-from cloudinary.models import CloudinaryField
-from cloudinary.forms import CloudinaryFileField
-from django.conf import settings
-from rest_framework.generics import CreateAPIView
-from rest_framework.parsers import MultiPartParser
+
+from django.db.models import Q
 
 # views.py, v1.5, May 29th 2023, Hugh Ding
 
@@ -103,18 +100,11 @@ def submit_form(response):
         Render: Combines a form.html with the form and returns an HttpResponse object with that rendered text.
     '''
     form = Submit_Form(response.POST, response.FILES)
-    print(settings.CLOUDINARY)
-    print(settings.CLOUDINARY_STORAGE)
-    print(settings.CLOUDINARY['cloud_name'])
-    print(settings.CLOUDINARY['api_key'])
-    print(settings.CLOUDINARY['api_secret'])
     print(print(cloudinary.config().cloud_name))
     print(cloudinary.config().api_key)
     print(cloudinary.config().api_secret)
 
     if response.method == 'POST' and form.is_valid():
-        print(settings.CLOUDINARY)
-        print(settings.CLOUDINARY_STORAGE)
         author = form.cleaned_data['AuthorFirstName'] + ' ' + form.cleaned_data['AuthorLastName']
         title = form.cleaned_data['Title']
         subtitle = form.cleaned_data['Subtitle']
@@ -148,63 +138,66 @@ def submit_form(response):
     
 def getTrueTags(tags, article):
     '''
-    counts the number of tags an article has that match the tags given
+    Counts the number of tags an article has that match the tags given
 
     Parameters:
-        tags: list of string of tags
+        tags: list of strings representing tags
+        article: Article object
+
     Returns:
         score: int, number of matches
     '''
     score = 0
-    for tag in tags: 
-        if tag in article.tags: score +=1
+    for tag in tags:
+        if tag in article.tags:
+            score += 1
     return score
 
 def search(response):
-
     '''
-    gets information from the search bar which is a form, and eliminates and sorts articles based on search
+    Gets information from the search bar, eliminates, and sorts articles based on the search.
 
     Parameters:
         response: HttpRequest object that contains metadata about the request
 
-    return:
-        Render: Combines home.html with articles and returns an HttpResponse object with that rendered text.
+    Returns:
+        HttpResponse object with the rendered text
     '''
-
-    # determines what the method of the response is
-    if response.method =='POST':
-
-        # get the answers from form
+    if response.method == 'POST':
+        # Get the input text from the form
         t = response.POST.get("search_text")
+
         tags = []
-        # appends to tags list if true
-        if response.POST.get("Religion"): tags.append("Relgion")
-        if response.POST.get("Politics"): tags.append("Politics")
-        if response.POST.get("Events"): tags.append("Events")
-        if response.POST.get("Environment"): tags.append("Environment")
-        if response.POST.get("Business"): tags.append("Business")
-        if response.POST.get("Sports"): tags.append("Sports")
-        if response.POST.get("Events"): tags.append("Events")
-        if response.POST.get("School"): tags.append("School")
+        # Append to tags list if true
+        if response.POST.get("Religion"):
+            tags.append("Religion")
+        if response.POST.get("Politics"):
+            tags.append("Politics")
+        if response.POST.get("Events"):
+            tags.append("Events")
+        if response.POST.get("Environment"):
+            tags.append("Environment")
+        if response.POST.get("Business"):
+            tags.append("Business")
+        if response.POST.get("Sports"):
+            tags.append("Sports")
+        if response.POST.get("School"):
+            tags.append("School")
 
-        # creating a article list and sorting by date
-        article_list = list(Article.objects.all().filter(approved=True).order_by('date'))
-        article_list2 = []
-        for article in article_list:
-            if t in article.title or t in article.subtitle:
-                article_list2.append(article)
+        # Filter articles based on title or subtitle containing the input text
+        article_list = list(Article.objects.filter(approved=True).filter(
+            Q(title__contains=t) | Q(subtitle__contains=t)).order_by('date'))
 
-        for index in range(len(article_list2)-1):
-            key = getTrueTags(tags, article_list2[index])
-            placeholder = index-1
-            while placeholder >= 0 and getTrueTags(tags, article_list2[placeholder]) > key:
-                article_list2[placeholder+1] = article_list2[placeholder]
-                placeholder -= 1
-            article_list2[placeholder+1] = article_list2[index]
-    
-    return render(response, "main/search.html", {"article_list":article_list})
+        # Sort articles using insertion sort based on the number of matching tags
+        for i in range(1, len(article_list)):
+            key = getTrueTags(tags, article_list[i])
+            j = i - 1
+            while j >= 0 and getTrueTags(tags, article_list[j]) < key:
+                article_list[j + 1] = article_list[j]
+                j -= 1
+            article_list[j + 1] = article_list[i]
 
+        return render(response, "main/search.html", {"article_list": article_list})
 
 
 
