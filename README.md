@@ -19,7 +19,7 @@ The name of this project is called Meritales Newspaper, a news website made for 
 * sqlparse>=0.4.3
 
 ## Known Bugs
-None at the moment
+When clicking the reccomended articles at the bottom of a article page, the urls doens't work due to the non flexible url configurations
 
 ## Support
 Deverlopers' Emails

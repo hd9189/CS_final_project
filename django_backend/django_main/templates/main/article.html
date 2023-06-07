@@ -57,7 +57,7 @@ This file is the page that displays the full article, alongside information such
   
 <!-- For loop that displays each recommended article-->
 {% for articles in recommended_articles %}
-  <div class="recommended_article" onclick="location.href='{{article1.id}}';">
+  <div class="recommended_article" onclick="location.href='{{articles.id}}';">
     <h1 class="title">{{articles.title}}</h1>
     <h3 class="subtitle">{{articles.subtitle}}</h3>
      <div class="likes_views">
