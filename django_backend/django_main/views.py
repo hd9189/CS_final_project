@@ -60,7 +60,7 @@ def home_opinion(response):
         Render: Combines home.html with articles and returns an HttpResponse object with that rendered text.
 
     '''
-    article_list = Article.objects.filter(approved=True, opinion=False).order_by('-date')
+    article_list = Article.objects.filter(approved=True, opinion=True).order_by('-date')
     article1 = article_list[0]
     article_list2 = article_list[1::2]
     article_list3 = article_list[2::2]
@@ -100,9 +100,6 @@ def submit_form(response):
         Render: Combines a form.html with the form and returns an HttpResponse object with that rendered text.
     '''
     form = Submit_Form(response.POST, response.FILES)
-    print(print(cloudinary.config().cloud_name))
-    print(cloudinary.config().api_key)
-    print(cloudinary.config().api_secret)
 
     if response.method == 'POST' and form.is_valid():
         author = form.cleaned_data['AuthorFirstName'] + ' ' + form.cleaned_data['AuthorLastName']
