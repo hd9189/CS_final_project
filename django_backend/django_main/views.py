@@ -21,7 +21,7 @@ def article_page(response, id):
 
     '''
     article = Article.objects.get(id=id)
-    rec_articles = Article.objects.filter(approved=True).order_by('date')
+    rec_articles = Article.objects.filter(approved=True).order_by('-date')
 
     # Increase the view count by 1
     article.views += 1
@@ -43,7 +43,7 @@ def home_trending(response):
 
     '''
 
-    article_list = Article.objects.all().filter(approved=True).order_by('views')
+    article_list = Article.objects.all().filter(approved=True).order_by('-views')
     article1 = article_list[0]
     article_list2 = article_list[1::2]
     article_list3 = article_list[2::2]
@@ -60,7 +60,7 @@ def home_opinion(response):
         Render: Combines home.html with articles and returns an HttpResponse object with that rendered text.
 
     '''
-    article_list = Article.objects.filter(approved=True, opinion=False).order_by('date')
+    article_list = Article.objects.filter(approved=True, opinion=False).order_by('-date')
     article1 = article_list[0]
     article_list2 = article_list[1::2]
     article_list3 = article_list[2::2]
@@ -80,7 +80,7 @@ def home_recent(response):
 
     '''
     
-    article_list = Article.objects.all().filter(approved=True).order_by('date')
+    article_list = Article.objects.all().filter(approved=True).order_by('-date')
     article1 = article_list[0]
     article_list2 = article_list[1::2]
     article_list3 = article_list[2::2]
@@ -186,7 +186,7 @@ def search(response):
 
         # Filter articles based on title or subtitle containing the input text
         article_list = list(Article.objects.filter(approved=True).filter(
-            Q(title__contains=t) | Q(subtitle__contains=t)).order_by('date'))
+            Q(title__contains=t) | Q(subtitle__contains=t)).order_by('-date'))
 
         # Sort articles using insertion sort based on the number of matching tags
         for i in range(1, len(article_list)):
