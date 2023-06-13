@@ -34,6 +34,7 @@ from cloudinary.models import CloudinaryField
 # This class is to store all essential information regarding each article. For every article, one of the Article objefts are created and store in there
 # Establishes django fields for Article class. 
 # inherits from django models module
+# This function comes from https://www.youtube.com/watch?v=sm1mokevMWk&t=9662s - this function initializes the django fields and helps create the model
 class Article(models.Model):
 
     '''

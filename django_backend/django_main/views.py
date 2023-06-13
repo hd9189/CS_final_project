@@ -86,6 +86,7 @@ def home_recent(response):
     article_list3 = article_list[2::2]
     return render(response, 'main/home.html', {'article1': article1, 'article_list2': article_list2, 'article_list3': article_list3 })
 
+# This function comes from https://www.youtube.com/watch?v=sm1mokevMWk&t=9662s - this function runs the django form
 
 def submit_form(response):
 
@@ -132,7 +133,7 @@ def submit_form(response):
     
     return render(response, "main/form.html", {"form":form})
     
-    
+
 def getTrueTags(tags, article):
     '''
     Counts the number of tags an article has that match the tags given

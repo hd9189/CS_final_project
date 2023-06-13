@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 
 # forms.py, v1.3, June 1st 2023, Hugh Ding
 
+# This comes from https://www.youtube.com/watch?v=sm1mokevMWk&t=9662s - this function initializes the django fields
 
 urlpatterns = [
     # go directly to the index page as default
